@@ -320,3 +320,17 @@ body {
   background: rgb(0 188 212 / 15%);
   color: #00bcd4;
 }
+
+.stand-badge.local-prod {
+  background: rgb(76 223 139 / 10%);
+  color: #4cdf8b;
+  outline: 2px dashed rgb(76 223 139 / 30%);
+  outline-offset: -1px;
+}
+
+.stand-badge.local-int {
+  background: rgb(0 188 212 / 12%);
+  color: #00bcd4;
+  outline: 2px dashed rgb(0 188 212 / 30%);
+  outline-offset: -1px;
+}

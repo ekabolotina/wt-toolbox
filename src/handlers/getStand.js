@@ -2,7 +2,7 @@ function getDomain(url) {
   try {
     return new URL(url).hostname;
   } catch {
-    return null;
+    return '';
   }
 }
 
@@ -32,12 +32,16 @@ export const getStand = async () => {
 
   const domain = getDomain(tabs[0].url);
 
-  if (!domain) {
-    throw new Error('No domain');
-  }
-
   if (domain === 'invest-test.alfabank.ru') {
     return 'int';
+  }
+
+  if (domain === 'local.invest-test.alfabank.ru') {
+    return 'local-int';
+  }
+
+  if (domain === 'local.invest.alfabank.ru') {
+    return 'local-prod';
   }
 
   if (domain === 'invest.alfabank.ru') {

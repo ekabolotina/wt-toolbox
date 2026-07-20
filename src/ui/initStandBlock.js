@@ -6,6 +6,8 @@ const LABEL_BY_STAND = {
   int: 'Int',
   prelive: 'Prelive',
   prod: 'Prod',
+  'local-int': 'Local (int)',
+  'local-prod': 'Local (prod)',
 };
 
 export async function initStandBlock() {
