@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logo">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+          </svg>
+        </div>
+        <span class="title">WT Toolbox</span>
+      </div>
+
+      <div class="vpn-status" id="vpnStatus">
+        <div class="vpn-indicator" id="vpnIndicator">
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <span class="vpn-text" id="vpnText">Проверка VPN...</span>
+      </div>
+
+      <div class="stand-status" id="standStatus">
+        <span class="stand-label">Стенд</span>
+        <span class="stand-badge" id="standBadge">&mdash;</span>
+      </div>
+
+      <div class="card">
+        <div class="input-group">
+          <label for="prNumber">Номер PR</label>
+          <div class="input-wrapper">
+            <input type="text" id="prNumber" placeholder="0000" inputmode="numeric" />
+          </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <span class="toggle-label">Принудительный PR</span>
+            <span class="toggle-hint" id="stateHint">Неактивен</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="toggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./popup.js"></script>
+  </body>
+</html>
