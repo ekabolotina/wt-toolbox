@@ -7,7 +7,7 @@
     "lint:css": "stylelint \"**/*.css\"",
     "lint:format": "prettier --check .",
     "format": "prettier --write .",
-    "build": "rm -rf dist && mkdir -p dist && cp manifest.json dist/ && cp -r src/* dist/"
+    "build": "rm -rf dist && mkdir -p dist && cp manifest.json dist/ && cp -r src dist/"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
