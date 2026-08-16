@@ -165,16 +165,58 @@ body {
   outline-offset: 2px;
 }
 
+.reload-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 9px 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgb(102 126 234 / 25%);
+  transition: all 0.2s ease;
+}
+
+.reload-button[hidden] {
+  display: none;
+}
+
+.reload-button:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 16px rgb(102 126 234 / 35%);
+}
+
+.reload-button:active {
+  transform: scale(0.98);
+}
+
+.reload-button:focus-visible {
+  outline: 2px solid rgb(102 126 234 / 60%);
+  outline-offset: 2px;
+}
+
 .separator {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgb(255 255 255 / 6%), transparent);
   margin: 14px 0;
 }
 
+.separator:has(+ .reload-button[hidden]) {
+  display: none;
+}
+
 .toggle-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 16px;
 }
 
 .toggle-info {

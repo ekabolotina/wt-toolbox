@@ -87,6 +87,8 @@ Create the action, the handler, and the UI module; register the pair in `src/bac
 
 The list itself lives in `prHistoryStore`, which owns the dedupe-and-cap rule.
 
+**Page reload** (`src/handlers/reloadTab.js`, `src/ui/initReloadBlock.js`) — a "Перезагрузить страницу" button under the PR input reloads the active tab. It is shown only while the current override — PR number _or_ the enabled flag — differs from what was in effect when the popup opened, and hides again when both return to that baseline or after the reload is triggered (the click makes the current pair the new baseline). The baseline for each half is captured from the first `subscribe()` delivery; comparison goes through `prNumberStore` / `prEnabledStore` rather than the DOM controls, so programmatic changes such as a history tag click move it too.
+
 **VPN check** (`src/handlers/checkVpn.js`) — requests a unique marker URL on `invest-test.alfabank.ru` and watches `webRequest` `onCompleted`/`onErrorOccurred`. A DNS failure (`ERR_NAME_NOT_RESOLVED` / `ERR_NAME_RESOLUTION_FAILED`) means no VPN; any other error still counts as connected. Resolves `false` after a 4s timeout. The `finish()` guard makes resolution single-shot and tears down both listeners.
 
 **Stand detection** (`src/handlers/getStand.js`) — maps the active tab's hostname to `int` / `local-int` / `local-prod`. `invest.alfabank.ru` is ambiguous, so it injects a script that scans inline `<script>` contents for `_PR_NUM` to tell `prelive` from `prod`. Unrecognized hosts return `unknown`, which `initStandBlock.js` renders as an em dash.

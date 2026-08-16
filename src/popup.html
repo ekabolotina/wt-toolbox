@@ -45,6 +45,17 @@
       </div>
 
       <div class="card">
+        <div class="toggle-row">
+          <label class="toggle-info" for="toggle">
+            <span class="toggle-label">Принудительный PR</span>
+            <span class="toggle-hint"></span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" id="toggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
+
         <div class="input-group">
           <label for="prNumber">Номер PR</label>
           <div class="input-wrapper">
@@ -58,16 +69,22 @@
 
         <div class="separator"></div>
 
-        <div class="toggle-row">
-          <label class="toggle-info" for="toggle">
-            <span class="toggle-label">Принудительный PR</span>
-            <span class="toggle-hint"></span>
-          </label>
-          <label class="toggle">
-            <input type="checkbox" id="toggle" />
-            <span class="slider"></span>
-          </label>
-        </div>
+        <button type="button" class="reload-button" id="reloadPage" hidden>
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="23 4 23 10 17 10" />
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+          </svg>
+          Перезагрузить страницу
+        </button>
       </div>
     </div>
     <script type="module" src="./popup.js"></script>
