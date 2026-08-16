@@ -50,6 +50,10 @@
           <div class="input-wrapper">
             <input type="text" id="prNumber" placeholder="0000" inputmode="numeric" />
           </div>
+          <div class="pr-history" id="prHistory" hidden>
+            <span class="pr-history-label">Недавние:</span>
+            <span class="pr-history-tags" id="prHistoryTags"></span>
+          </div>
         </div>
 
         <div class="separator"></div>
@@ -57,7 +61,7 @@
         <div class="toggle-row">
           <label class="toggle-info" for="toggle">
             <span class="toggle-label">Принудительный PR</span>
-            <span class="toggle-hint" id="stateHint">Неактивен</span>
+            <span class="toggle-hint"></span>
           </label>
           <label class="toggle">
             <input type="checkbox" id="toggle" />

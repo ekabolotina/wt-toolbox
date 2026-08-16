@@ -1,5 +1,6 @@
+import { DOMAINS } from '../utils/domains.js';
+
 const COOKIE_NAME = '_PR_NUM';
-const DOMAINS = ['invest.alfabank.ru', 'invest-test.alfabank.ru'];
 const RULE_IDS = DOMAINS.map((_, i) => i + 1);
 
 export const overridePR = async (payload) => {

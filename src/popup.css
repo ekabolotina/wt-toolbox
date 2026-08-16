@@ -116,6 +116,55 @@ body {
   border-color: rgb(255 255 255 / 12%);
 }
 
+.pr-history {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.pr-history[hidden] {
+  display: none;
+}
+
+.pr-history-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgb(255 255 255 / 25%);
+}
+
+.pr-history-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pr-tag {
+  font: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: none;
+  color: rgb(255 255 255 / 45%);
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.pr-tag:hover {
+  color: rgb(255 255 255 / 80%);
+}
+
+.pr-tag:focus-visible {
+  outline: 2px solid rgb(102 126 234 / 50%);
+  outline-offset: 2px;
+}
+
 .separator {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgb(255 255 255 / 6%), transparent);
@@ -148,8 +197,16 @@ body {
   transition: color 0.3s ease;
 }
 
-.toggle-hint.active {
+.toggle-hint::before {
+  content: 'Неактивен';
+}
+
+.toggle-row:has(input:checked) .toggle-hint {
   color: #4cdf8b;
+}
+
+.toggle-row:has(input:checked) .toggle-hint::before {
+  content: 'Активен';
 }
 
 .toggle {
