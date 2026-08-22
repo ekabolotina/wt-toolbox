@@ -1,22 +1,28 @@
-import { DOMAINS } from '../utils/domains.js';
+import { DOMAINS } from '../consts/domains.js';
+import { resolveApp } from '../utils/resolveApp.js';
 
-const COOKIE_NAME = '_PR_NUM';
 const RULE_IDS = DOMAINS.map((_, i) => i + 1);
 
-export const overridePR = async (payload) => {
-  const { prNumber, enabled } = payload;
+const RESOURCE_TYPES = [
+  'main_frame',
+  'sub_frame',
+  'stylesheet',
+  'script',
+  'image',
+  'font',
+  'object',
+  'xmlhttprequest',
+  'ping',
+  'csp_report',
+  'media',
+  'websocket',
+  'other',
+];
 
-  await chrome.declarativeNetRequest.updateDynamicRules({
-    removeRuleIds: RULE_IDS,
-  });
+let pending = Promise.resolve();
 
-  if (!enabled || !prNumber) {
-    return;
-  }
-
-  const cookieValue = `${COOKIE_NAME}=${prNumber}`;
-
-  const rules = DOMAINS.map((domain, i) => ({
+function buildRules(cookieValue) {
+  return DOMAINS.map((domain, i) => ({
     id: RULE_IDS[i],
     priority: 1,
     action: {
@@ -25,25 +31,23 @@ export const overridePR = async (payload) => {
     },
     condition: {
       urlFilter: `||${domain}`,
-      resourceTypes: [
-        'main_frame',
-        'sub_frame',
-        'stylesheet',
-        'script',
-        'image',
-        'font',
-        'object',
-        'xmlhttprequest',
-        'ping',
-        'csp_report',
-        'media',
-        'websocket',
-        'other',
-      ],
+      resourceTypes: RESOURCE_TYPES,
     },
   }));
+}
 
-  await chrome.declarativeNetRequest.updateDynamicRules({
-    addRules: rules,
-  });
+export const overridePR = async (payload) => {
+  const { prNumber, enabled, appId } = payload;
+  const active = Boolean(enabled && prNumber);
+  const addRules = active ? buildRules(`${resolveApp(appId).cookie}=${prNumber}`) : [];
+
+  const apply = () =>
+    chrome.declarativeNetRequest.updateDynamicRules({
+      removeRuleIds: RULE_IDS,
+      addRules,
+    });
+
+  pending = pending.then(apply, apply);
+
+  await pending;
 };

@@ -1,6 +1,7 @@
 import { reloadTabAction } from '../actions/reloadTabAction.js';
 import { prNumberStore } from '../stores/prNumberStore.js';
 import { prEnabledStore } from '../stores/prEnabledStore.js';
+import { appIdStore } from '../stores/appIdStore.js';
 
 const reloadButton = document.getElementById('reloadPage');
 
@@ -12,8 +13,7 @@ export async function initReloadBlock() {
     applied[key] ??= value;
     current[key] = value;
 
-    reloadButton.hidden =
-      current.prNumber === applied.prNumber && current.enabled === applied.enabled;
+    reloadButton.hidden = Object.keys(applied).every((name) => current[name] === applied[name]);
   };
 
   reloadButton.addEventListener('click', async () => {
@@ -25,4 +25,5 @@ export async function initReloadBlock() {
 
   prNumberStore.subscribe((prNumber) => update('prNumber', prNumber));
   prEnabledStore.subscribe((enabled) => update('enabled', enabled));
+  appIdStore.subscribe((appId) => update('appId', appId));
 }

@@ -1,4 +1,4 @@
-import { DOMAINS } from '../utils/domains.js';
+import { DOMAINS } from '../consts/domains.js';
 import { prHistoryStore } from '../stores/prHistoryStore.js';
 import { prNumberStore } from '../stores/prNumberStore.js';
 import { prEnabledStore } from '../stores/prEnabledStore.js';
