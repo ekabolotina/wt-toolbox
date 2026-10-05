@@ -214,7 +214,8 @@ body {
   outline-offset: 2px;
 }
 
-.reload-button {
+.reload-button,
+.action-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,18 +238,26 @@ body {
   display: none;
 }
 
-.reload-button:hover {
+.reload-button:hover,
+.action-button:hover {
   filter: brightness(1.1);
   box-shadow: 0 6px 16px rgb(102 126 234 / 35%);
 }
 
-.reload-button:active {
+.reload-button:active,
+.action-button:active {
   transform: scale(0.98);
 }
 
-.reload-button:focus-visible {
+.reload-button:focus-visible,
+.action-button:focus-visible {
   outline: 2px solid rgb(102 126 234 / 60%);
   outline-offset: 2px;
+}
+
+.action-button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .separator {
@@ -466,4 +475,50 @@ body {
   color: #00bcd4;
   outline: 2px dashed rgb(0 188 212 / 30%);
   outline-offset: -1px;
+}
+
+.card + .card {
+  margin-top: 14px;
+}
+
+.ui-tests-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.ui-tests-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgb(255 255 255 / 40%);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ui-tests-pr {
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: rgb(255 255 255 / 70%);
+}
+
+.ui-tests-status {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  color: rgb(255 255 255 / 40%);
+}
+
+.ui-tests-status:empty {
+  display: none;
+}
+
+.ui-tests-status.success {
+  color: #4cdf8b;
+}
+
+.ui-tests-status.error {
+  color: #ff6b6b;
 }

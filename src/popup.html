@@ -93,6 +93,15 @@
           Перезагрузить страницу
         </button>
       </div>
+
+      <div class="card ui-tests-card" id="uiTestsCard" hidden>
+        <div class="ui-tests-header">
+          <span class="ui-tests-label">Pull request</span>
+          <span class="ui-tests-pr" id="uiTestsPrNumber"></span>
+        </div>
+        <button type="button" class="action-button" id="runUITests">Запустить UI-тесты</button>
+        <div class="ui-tests-status" id="uiTestsStatus"></div>
+      </div>
     </div>
     <script type="module" src="./popup.js"></script>
   </body>
