@@ -9,6 +9,7 @@
     "service_worker": "src/background.js",
     "type": "module"
   },
+  "devtools_page": "src/devtools.html",
   "action": {
     "default_popup": "src/popup.html",
     "default_icon": {

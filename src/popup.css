@@ -503,6 +503,31 @@ body {
   color: rgb(255 255 255 / 70%);
 }
 
+.card-label {
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgb(255 255 255 / 40%);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.remote-config-status {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(255 255 255 / 40%);
+}
+
+.remote-config-status.active {
+  color: rgb(255 255 255 / 85%);
+}
+
+.remote-config-hint {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgb(255 255 255 / 30%);
+}
+
 .ui-tests-status {
   margin-top: 8px;
   font-size: 11px;

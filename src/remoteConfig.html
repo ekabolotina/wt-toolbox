@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="remoteConfig.css" />
+  </head>
+  <body>
+    <main id="remoteConfigContent">
+      <div class="toolbar">
+        <input
+          type="search"
+          id="flagSearch"
+          class="search"
+          placeholder="Поиск по названию"
+          aria-label="Поиск по названию"
+        />
+        <button type="button" class="button button-primary" id="reloadPage">
+          Перезагрузить страницу
+        </button>
+        <span class="hint">Изменения применяются после перезагрузки</span>
+      </div>
+
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">
+            Переопределения <span class="section-count" id="flagCount"></span>
+          </h2>
+          <button type="button" class="button" id="addFlag">Добавить</button>
+        </div>
+
+        <table class="flags">
+          <colgroup>
+            <col class="col-enabled" />
+            <col class="col-key" />
+            <col />
+            <col class="col-action" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th title="Переопределение включено">Вкл</th>
+              <th>Ключ</th>
+              <th>Значение</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="flagRows"></tbody>
+        </table>
+
+        <p class="empty-state" id="flagEmptyState"></p>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">
+            Remote config <span class="section-count" id="remoteCount"></span>
+          </h2>
+        </div>
+
+        <table class="flags">
+          <colgroup>
+            <col class="col-enabled" />
+            <col class="col-key" />
+            <col />
+            <col class="col-action" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Ключ</th>
+              <th>Значение</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="remoteRows"></tbody>
+        </table>
+
+        <p class="empty-state" id="remoteEmptyState"></p>
+      </section>
+    </main>
+
+    <p class="empty-state" id="unavailableState" hidden></p>
+
+    <template id="flagRowTemplate">
+      <tr class="flag-row">
+        <td class="cell-enabled">
+          <input type="checkbox" class="flag-enabled" aria-label="Переопределение включено" />
+        </td>
+        <td>
+          <input type="text" class="flag-input flag-key" aria-label="Ключ" spellcheck="false" />
+        </td>
+        <td>
+          <input
+            type="text"
+            class="flag-input flag-value"
+            aria-label="Значение"
+            spellcheck="false"
+          />
+        </td>
+        <td class="cell-action">
+          <button type="button" class="row-button flag-delete" title="Удалить" aria-label="Удалить">
+            &times;
+          </button>
+        </td>
+      </tr>
+    </template>
+
+    <template id="remoteRowTemplate">
+      <tr class="remote-row">
+        <td></td>
+        <td><div class="remote-text remote-key"></div></td>
+        <td><div class="remote-text remote-value"></div></td>
+        <td class="cell-action">
+          <button
+            type="button"
+            class="row-button remote-edit"
+            title="Переопределить"
+            aria-label="Переопределить"
+          >
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+            </svg>
+          </button>
+        </td>
+      </tr>
+    </template>
+
+    <script type="module" src="./remoteConfig.js"></script>
+  </body>
+</html>

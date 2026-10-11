@@ -1,5 +1,6 @@
 import { DOMAINS } from '../consts/domains.js';
 import { resolveApp } from '../utils/resolveApp.js';
+import { updateDynamicRules } from '../utils/updateDynamicRules.js';
 
 const RULE_IDS = DOMAINS.map((_, i) => i + 1);
 
@@ -18,8 +19,6 @@ const RESOURCE_TYPES = [
   'websocket',
   'other',
 ];
-
-let pending = Promise.resolve();
 
 function buildRules(cookieValue) {
   return DOMAINS.map((domain, i) => ({
@@ -41,13 +40,5 @@ export const overridePR = async (payload) => {
   const active = Boolean(enabled && prNumber);
   const addRules = active ? buildRules(`${resolveApp(appId).cookie}=${prNumber}`) : [];
 
-  const apply = () =>
-    chrome.declarativeNetRequest.updateDynamicRules({
-      removeRuleIds: RULE_IDS,
-      addRules,
-    });
-
-  pending = pending.then(apply, apply);
-
-  await pending;
+  await updateDynamicRules({ removeRuleIds: RULE_IDS, addRules });
 };
