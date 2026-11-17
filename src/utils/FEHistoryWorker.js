@@ -1,5 +1,5 @@
 export class FEHistoryWorker {
-  worker = new Worker(new URL('../vendor/feHistory.worker.js', import.meta.url), {
+  worker = new Worker(new URL('../fe/history.worker.js', import.meta.url), {
     type: 'module',
     name: 'FEHistory',
   });

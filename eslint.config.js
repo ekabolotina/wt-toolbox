@@ -21,6 +21,13 @@ module.exports = [
         crypto: 'readonly',
         navigator: 'readonly',
         Worker: 'readonly',
+        IDBKeyRange: 'readonly',
+        performance: 'readonly',
+        TextEncoder: 'readonly',
+        TextDecoder: 'readonly',
+        HTMLDetailsElement: 'readonly',
+        FormData: 'readonly',
+        Blob: 'readonly',
       },
     },
     rules: {

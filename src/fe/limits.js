@@ -1,0 +1,5 @@
+export const FE_LIMITS = {
+  HISTORY_LIMIT: 2 * 1024 * 1024 * 1024,
+  QUEUE_LIMIT: 128 * 1024 * 1024,
+  PAGE_SIZE: 100,
+};

@@ -56,7 +56,16 @@ async function connect(retry = false) {
   status.textContent = 'Подключение…';
 
   try {
-    const { mountFEViewer } = await import('./vendor/feViewer.js');
+    const [{ FETablePanel }, styles] = await Promise.all([
+      import('./fe/FETablePanel.js'),
+      fetch(new URL('./fe/styles.css', import.meta.url)).then((response) => {
+        if (!response.ok) {
+          throw new Error('Не удалось загрузить стили FE Messages');
+        }
+
+        return response.text();
+      }),
+    ]);
 
     if (selected !== generation) {
       return;
@@ -84,18 +93,23 @@ async function connect(retry = false) {
     }
 
     controls.hidden = true;
-    viewer = mountFEViewer(host, connected, () => {
-      if (selected === generation) {
-        client = undefined;
-        viewer = undefined;
-        port?.disconnect();
-        port = undefined;
-        controls.hidden = false;
-        connectButton.disabled = false;
-        connectButton.hidden = false;
-        status.textContent = 'Подключение закрыто. История сохранена';
-      }
-    });
+    viewer = new FETablePanel(
+      connected,
+      () => {
+        if (selected === generation) {
+          client = undefined;
+          viewer = undefined;
+          port?.disconnect();
+          port = undefined;
+          controls.hidden = false;
+          connectButton.disabled = false;
+          connectButton.hidden = false;
+          status.textContent = 'Подключение закрыто. История сохранена';
+        }
+      },
+      host,
+      styles,
+    );
     viewer.setTheme(theme);
   } catch (error) {
     if (selected === generation) {
