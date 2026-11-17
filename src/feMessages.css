@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  font:
+    13px system-ui,
+    sans-serif;
+}
+
+#connection {
+  padding: 16px;
+}
+
+#connection[hidden] {
+  display: none;
+}
+
+button[hidden] {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+  padding: 8px 12px;
+  color: inherit;
+}
+
+#status {
+  white-space: pre-wrap;
+}
+
+html {
+  color: #253247;
+  color-scheme: light;
+  background: #fff;
+}
+
+html[data-theme='dark'] {
+  color: #e3e3e3;
+  color-scheme: dark;
+  background: #202124;
+}

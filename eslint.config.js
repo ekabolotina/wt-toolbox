@@ -1,7 +1,7 @@
 const js = require('@eslint/js');
 
 module.exports = [
-  { ignores: ['dist/', 'node_modules/'] },
+  { ignores: ['dist/', 'node_modules/', '**/vendor/'] },
   js.configs.recommended,
   require('eslint-config-prettier'),
   {
@@ -18,6 +18,8 @@ module.exports = [
         console: 'readonly',
         window: 'readonly',
         self: 'readonly',
+        crypto: 'readonly',
+        navigator: 'readonly',
       },
     },
     rules: {
