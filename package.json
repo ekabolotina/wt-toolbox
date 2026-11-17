@@ -3,7 +3,7 @@
   "version": "1.5.0",
   "private": true,
   "scripts": {
-    "test": "node --test scripts/fe-viewer.test.mjs",
+    "test": "node --test scripts/fe-viewer.test.mjs scripts/fe-capture-session.test.mjs",
     "lint:js": "eslint .",
     "lint:css": "stylelint \"**/*.css\"",
     "lint:format": "prettier --check .",

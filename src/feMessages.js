@@ -117,18 +117,8 @@ async function connect(retry = false) {
 
 connectButton.addEventListener('click', () => void connect(true));
 chrome.devtools.network.onNavigated.addListener(() => {
-  const reconnect = Boolean(client);
-
-  generation++;
-  client?.invalidate();
-  client = undefined;
-  void viewer?.destroy();
-  viewer = undefined;
-  host.replaceChildren();
-  controls.hidden = false;
-  if (reconnect) {
-    void connect(true);
+  if (client && !client.disposed) {
+    void client.request('navigate').catch((error) => client?.onChange(undefined, String(error)));
   }
 });
-
 void connect(true);

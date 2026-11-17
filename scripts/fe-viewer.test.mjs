@@ -5,6 +5,49 @@ import { feViewer } from '../src/handlers/feViewer.js';
 import { trackFEViewer } from '../src/handlers/trackFEViewer.js';
 import { feViewerConnections } from '../src/utils/feViewerConnections.js';
 
+test('late connect is closed after its DevTools owner has disappeared', async () => {
+  const originalChrome = globalThis.chrome;
+  const token = 'late-connect-owner';
+  let release;
+  let viewers = 0;
+  const gate = new Promise((resolve) => {
+    release = resolve;
+  });
+
+  feViewerConnections.set(token, {});
+  globalThis.chrome = {
+    runtime: {
+      getContexts: async () => [{}],
+      getURL: (url) => url,
+      async sendMessage({ payload: { request } }) {
+        if (request.method === 'connect') {
+          await gate;
+          viewers++;
+        } else if (request.method === 'close') {
+          viewers--;
+        }
+
+        return { ok: true };
+      },
+    },
+    tabs: { get: async () => ({ url: 'https://invest.alfabank.ru/' }) },
+  };
+
+  try {
+    const connecting = feViewer({ tabId: 1, request: { method: 'connect', token } });
+
+    await nextTurn();
+    feViewerConnections.delete(token);
+    release();
+    await connecting;
+    assert.equal(viewers, 0);
+  } finally {
+    release();
+    feViewerConnections.delete(token);
+    globalThis.chrome = originalChrome;
+  }
+});
+
 test('disconnect cleanup preserves a replacement owner and closes an abandoned connection', async (t) => {
   const originalChrome = globalThis.chrome;
   const token = 'test-fe-viewer-owner';
@@ -24,6 +67,16 @@ test('disconnect cleanup preserves a replacement owner and closes an abandoned c
 
         globalThis.chrome = {
           runtime: {
+            getContexts: async () => [{}],
+            getURL: (url) => url,
+            async sendMessage({ payload: { request } }) {
+              if (request.method === 'close') {
+                closes++;
+                recording = false;
+              }
+
+              return { ok: true, data: { recording } };
+            },
             onConnect: {
               addListener(listener) {
                 onConnect = listener;
@@ -85,6 +138,7 @@ test('disconnect cleanup preserves a replacement owner and closes an abandoned c
         await feViewer({ tabId: 1, request: { method: 'connect', token } });
         hold = true;
         disconnect()();
+        await nextTurn();
         if (replace) {
           open();
           const reply = await feViewer({ tabId: 1, request: { method: 'connect', token } });

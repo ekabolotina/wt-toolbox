@@ -34,7 +34,7 @@ export class FEViewerClient {
       throw new Error('Страница изменилась');
     }
 
-    if (!reply?.ok || reply.data?.version !== 1) {
+    if (!reply?.ok || reply.data?.version !== 2) {
       throw new Error(reply?.error || 'Несовместимая версия FE Messages');
     }
 

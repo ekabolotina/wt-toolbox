@@ -20,6 +20,7 @@ module.exports = [
         self: 'readonly',
         crypto: 'readonly',
         navigator: 'readonly',
+        Worker: 'readonly',
       },
     },
     rules: {

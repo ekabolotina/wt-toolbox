@@ -412,10 +412,9 @@ var n = 2147483648, r = () => ({
 			e === this.query && t === this.copyQuery && (this.element(".jsonStatus").textContent = String(n));
 		}
 	}
-}, a = ":host {\n  --fe-bg: #fff;\n  --fe-text: #253247;\n  --fe-surface: #f6f8fb;\n  --fe-border: #c8d1df;\n  --fe-divider: #e2e7ef;\n  --fe-muted: #62718a;\n  --fe-disabled-text: #8792a3;\n  --fe-disabled-bg: #f1f3f7;\n  --fe-hover: #eaf0f9;\n  --fe-hover-border: #8299ba;\n  --fe-accent: #295da8;\n  --fe-accent-hover: #204d90;\n  --fe-on-accent: #fff;\n  --fe-danger: #a42c35;\n  --fe-key: #7944ad;\n  --fe-string: #a23639;\n  --fe-scalar: #2455a4;\n  --fe-selected: #e6effc;\n  --fe-selected-text: #17477f;\n  --fe-head: #f1f4f8;\n  --fe-row-hover: #f2f6fc;\n  --fe-mark: #ffeb99;\n  --fe-shadow: #182b4a33;\n  --fe-overlay-shadow: #182b4a26;\n  --fe-radius: 10px;\n  --fe-space: 10px;\n  --fe-padding: 6px;\n  --fe-square: 0;\n\n  all: initial;\n  font: 13px / 1.45 system-ui, sans-serif;\n  color: var(--fe-text);\n  color-scheme: light;\n}\n\n:host([data-theme='dark']) {\n  --fe-bg: #202124;\n  --fe-text: #e3e3e3;\n  --fe-surface: #292a2d;\n  --fe-border: #5f6368;\n  --fe-divider: #3c4043;\n  --fe-muted: #9aa0a6;\n  --fe-disabled-text: #80868b;\n  --fe-disabled-bg: #292a2d;\n  --fe-hover: #35363a;\n  --fe-hover-border: #8ab4f8;\n  --fe-accent: #8ab4f8;\n  --fe-accent-hover: #aecbfa;\n  --fe-on-accent: #202124;\n  --fe-danger: #f28b82;\n  --fe-key: #c58af9;\n  --fe-string: #f28b82;\n  --fe-scalar: #8ab4f8;\n  --fe-selected: #314463;\n  --fe-selected-text: #d2e3fc;\n  --fe-head: #292a2d;\n  --fe-row-hover: #303134;\n  --fe-mark: #66551a;\n  --fe-shadow: #0006;\n  --fe-overlay-shadow: #0006;\n\n  color-scheme: dark;\n}\n\n*,\n*::before,\n*::after {\n  box-sizing: border-box;\n}\n\n[hidden] {\n  display: none;\n}\n\n:focus-visible {\n  outline: 2px solid #3978cf;\n  outline-offset: 2px;\n}\n\n.panel {\n  resize: both;\n\n  position: fixed;\n  z-index: 2147483647;\n  right: 16px;\n  bottom: 16px;\n\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n\n  width: min(1120px, calc(100vw - 32px));\n  min-width: min(420px, calc(100vw - 32px));\n  height: min(740px, calc(100vh - 32px));\n  min-height: 300px;\n\n  color: var(--fe-text);\n\n  background: var(--fe-bg);\n  border: 1px solid var(--fe-border);\n  border-radius: var(--fe-radius);\n  box-shadow: 0 12px 48px var(--fe-shadow);\n}\n\n.pip {\n  resize: none;\n\n  position: static;\n\n  width: 100vw;\n  min-width: 0;\n  height: 100vh;\n  min-height: 0;\n\n  border: 0;\n  border-radius: var(--fe-square);\n}\n\n.embedded {\n  resize: none;\n\n  position: static;\n\n  width: 100%;\n  min-width: 0;\n  height: 100vh;\n  min-height: 0;\n\n  border: 0;\n  border-radius: var(--fe-square);\n  box-shadow: none;\n}\n\n@media (width <= 760px) {\n  .embedded .body {\n    grid-template-columns: minmax(0, 1fr);\n    grid-template-rows: minmax(100px, 0.6fr) minmax(0, 1fr);\n  }\n}\n\nheader,\nfooter,\nform {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 8px;\n  align-items: center;\n\n  padding: 12px;\n\n  border-bottom: 1px solid var(--fe-divider);\n}\n\nheader,\nfooter {\n  background: var(--fe-surface);\n}\n\nheader strong {\n  margin-right: auto;\n  white-space: nowrap;\n}\n\n.recordingControls {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 8px;\n}\n\nform {\n  align-items: end;\n}\n\nbutton,\ninput,\nselect,\nsummary {\n  max-width: 100%;\n  min-height: 32px;\n  padding: var(--fe-padding) 9px;\n\n  font: inherit;\n  color: inherit;\n\n  background: var(--fe-bg);\n  border: 1px solid var(--fe-border);\n  border-radius: 5px;\n}\n\nbutton,\nsummary {\n  cursor: pointer;\n}\n\nbutton:disabled {\n  cursor: default;\n  color: var(--fe-disabled-text);\n  background: var(--fe-disabled-bg);\n}\n\n.jsonContent button {\n  max-width: 220px;\n  text-align: left;\n  overflow-wrap: anywhere;\n}\n\n.jsonTree {\n  font: 12px / 1.6 ui-monospace, monospace;\n}\n\n.jsonChildren {\n  padding-left: 16px;\n}\n\n.jsonSummary,\n.jsonLeaf {\n  display: flex;\n  gap: 4px;\n  align-items: baseline;\n\n  min-height: 24px;\n  padding: 2px 4px;\n\n  white-space: nowrap;\n\n  background: transparent;\n  border: 0;\n  border-radius: var(--border-radius-0);\n}\n\n.jsonSummary::before {\n  content: '▸';\n  flex: none;\n  width: 10px;\n  color: var(--fe-muted);\n}\n\n.jsonBranch[open] > .jsonSummary::before {\n  content: '▾';\n}\n\n.jsonLeaf {\n  padding-left: 18px;\n}\n\n.jsonName {\n  overflow: hidden;\n  flex: none;\n\n  max-width: 40%;\n\n  color: var(--fe-key);\n  text-overflow: ellipsis;\n}\n\n.jsonValue {\n  overflow: hidden;\n  flex: 1;\n  min-width: 0;\n  text-overflow: ellipsis;\n}\n\n.jsonValue[data-type='string'] {\n  color: var(--fe-string);\n}\n\n.jsonValue[data-type='number'],\n.jsonValue[data-type='boolean'] {\n  color: var(--fe-scalar);\n}\n\n.jsonJump {\n  flex: none;\n\n  min-height: 20px;\n  padding: 0 4px;\n\n  white-space: nowrap;\n\n  background: transparent;\n  border: 0;\n}\n\nbutton:hover:not(:disabled),\nsummary:hover {\n  background: var(--fe-hover);\n  border-color: var(--fe-hover-border);\n}\n\n#record,\nbutton[type='submit'] {\n  color: var(--fe-on-accent);\n  background: var(--fe-accent);\n  border-color: var(--fe-accent);\n}\n\n#record:hover:not(:disabled),\nbutton[type='submit']:hover {\n  background: var(--fe-accent-hover);\n}\n\n.danger {\n  color: var(--fe-danger);\n}\n\ninput {\n  width: 145px;\n}\n\ninput[name='fe'] {\n  width: 70px;\n}\n\ninput[type='datetime-local'] {\n  width: 210px;\n}\n\n.period {\n  position: relative;\n}\n\n.periodFields {\n  position: absolute;\n  z-index: 3;\n  top: calc(100% + 6px);\n  right: 0;\n\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n\n  padding: 12px;\n\n  background: var(--fe-bg);\n  border: 1px solid var(--fe-border);\n  border-radius: 5px;\n  box-shadow: 0 6px 18px var(--fe-overlay-shadow);\n}\n\nlabel,\n.entityPicker {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n\n.entityPicker {\n  position: relative;\n  width: 260px;\n}\n\n.entityControl {\n  display: flex;\n  gap: 4px;\n}\n\n.entityControl input {\n  flex: 1;\n  min-width: 0;\n}\n\n.entityOptions {\n  position: absolute;\n  z-index: 2;\n  top: 100%;\n  left: 0;\n\n  overflow: auto;\n\n  width: max-content;\n  min-width: 100%;\n  max-width: min(480px, 80vw);\n  max-height: 240px;\n\n  background: var(--fe-bg);\n  border: 1px solid var(--fe-border);\n  border-radius: 5px;\n  box-shadow: 0 6px 18px var(--fe-overlay-shadow);\n}\n\n.entityOptions [role='option'],\n.empty {\n  padding: 7px var(--fe-space);\n  overflow-wrap: anywhere;\n}\n\n.entityOptions [role='option'] {\n  cursor: pointer;\n}\n\n.entityOptions [role='option']:hover,\n.entityOptions [aria-selected='true'] {\n  color: var(--fe-selected-text);\n  background: var(--fe-selected);\n}\n\n.body {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  flex: 1;\n  min-height: 0;\n}\n\n.list,\n.detail {\n  overflow: auto;\n  min-width: 0;\n  padding: var(--fe-space);\n}\n\n.list {\n  border-right: 1px solid var(--fe-divider);\n}\n\n.detail {\n  display: flex;\n  flex-direction: column;\n}\n\n:where(.jsonViewer) {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n}\n\n.jsonControls,\n.jsonPath {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 4px;\n  margin: 8px 0;\n}\n\n.jsonControls[hidden] {\n  display: none;\n}\n\n.jsonSearch {\n  padding: 8px 0;\n}\n\n.jsonContent {\n  overflow: auto;\n  flex: 1;\n  min-height: 60px;\n  max-height: 420px;\n}\n\n.jsonStatus {\n  overflow-wrap: anywhere;\n}\n\ntable {\n  border-collapse: collapse;\n\n  width: 100%;\n  margin-bottom: var(--fe-space);\n\n  font: 12px / 1.5 ui-monospace, monospace;\n  text-align: left;\n}\n\nth {\n  position: sticky;\n  top: -10px;\n  background: var(--fe-head);\n}\n\ntd,\nth {\n  padding: 7px;\n  overflow-wrap: anywhere;\n  border-bottom: 1px solid var(--fe-divider);\n}\n\ntbody tr {\n  cursor: pointer;\n}\n\ntbody tr:hover {\n  background: var(--fe-row-hover);\n}\n\ntr[aria-selected='true'] {\n  background: var(--fe-selected);\n}\n\npre {\n  margin: var(--fe-space) 0;\n  font: 12px / 1.5 ui-monospace, monospace;\n  overflow-wrap: anywhere;\n  white-space: pre-wrap;\n}\n\nmark {\n  color: inherit;\n  background: var(--fe-mark);\n}\n\n.status {\n  flex-basis: 100%;\n  overflow-wrap: anywhere;\n  white-space: pre-wrap;\n}\n\n.error {\n  color: var(--fe-danger);\n}\n\n#progress,\n#selected,\n.muted,\n.empty,\nfooter > span {\n  color: var(--fe-muted);\n}\n\nfooter {\n  border-top: 1px solid var(--fe-divider);\n  border-bottom: 0;\n}\n\n@media (width <= 700px) {\n  .body {\n    overflow: auto;\n    grid-template-columns: 1fr;\n  }\n\n  .list,\n  .detail {\n    overflow: visible;\n  }\n}\n", o = class {
+}, a = ":host {\n  --fe-bg: #fff;\n  --fe-text: #253247;\n  --fe-surface: #f6f8fb;\n  --fe-border: #c8d1df;\n  --fe-divider: #e2e7ef;\n  --fe-muted: #62718a;\n  --fe-disabled-text: #8792a3;\n  --fe-disabled-bg: #f1f3f7;\n  --fe-hover: #eaf0f9;\n  --fe-hover-border: #8299ba;\n  --fe-accent: #295da8;\n  --fe-accent-hover: #204d90;\n  --fe-on-accent: #fff;\n  --fe-danger: #a42c35;\n  --fe-key: #7944ad;\n  --fe-string: #a23639;\n  --fe-scalar: #2455a4;\n  --fe-selected: #e6effc;\n  --fe-selected-text: #17477f;\n  --fe-head: #f1f4f8;\n  --fe-row-hover: #f2f6fc;\n  --fe-mark: #ffeb99;\n  --fe-shadow: #182b4a33;\n  --fe-overlay-shadow: #182b4a26;\n  --fe-radius: 10px;\n  --fe-space: 10px;\n  --fe-padding: 6px;\n  --fe-square: 0;\n\n  all: initial;\n  font: 13px / 1.45 system-ui, sans-serif;\n  color: var(--fe-text);\n  color-scheme: light;\n}\n\n:host([data-theme='dark']) {\n  --fe-bg: #202124;\n  --fe-text: #e3e3e3;\n  --fe-surface: #292a2d;\n  --fe-border: #5f6368;\n  --fe-divider: #3c4043;\n  --fe-muted: #9aa0a6;\n  --fe-disabled-text: #80868b;\n  --fe-disabled-bg: #292a2d;\n  --fe-hover: #35363a;\n  --fe-hover-border: #8ab4f8;\n  --fe-accent: #8ab4f8;\n  --fe-accent-hover: #aecbfa;\n  --fe-on-accent: #202124;\n  --fe-danger: #f28b82;\n  --fe-key: #c58af9;\n  --fe-string: #f28b82;\n  --fe-scalar: #8ab4f8;\n  --fe-selected: #314463;\n  --fe-selected-text: #d2e3fc;\n  --fe-head: #292a2d;\n  --fe-row-hover: #303134;\n  --fe-mark: #66551a;\n  --fe-shadow: #0006;\n  --fe-overlay-shadow: #0006;\n\n  color-scheme: dark;\n}\n\n*,\n*::before,\n*::after {\n  box-sizing: border-box;\n}\n\n[hidden] {\n  display: none;\n}\n\n:focus-visible {\n  outline: 2px solid #3978cf;\n  outline-offset: 2px;\n}\n\n.panel {\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n\n  width: 100%;\n  height: 100vh;\n\n  color: var(--fe-text);\n\n  background: var(--fe-bg);\n}\n\n@media (width <= 760px) {\n  .embedded .body {\n    grid-template-columns: minmax(0, 1fr);\n    grid-template-rows: minmax(100px, 0.6fr) minmax(0, 1fr);\n  }\n}\n\nheader,\nfooter,\nform {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 8px;\n  align-items: center;\n\n  padding: 12px;\n\n  border-bottom: 1px solid var(--fe-divider);\n}\n\nheader,\nfooter {\n  background: var(--fe-surface);\n}\n\nheader strong {\n  margin-right: auto;\n  white-space: nowrap;\n}\n\n.recordingControls {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 8px;\n}\n\nform {\n  align-items: end;\n}\n\nbutton,\ninput,\nselect,\nsummary {\n  max-width: 100%;\n  min-height: 32px;\n  padding: var(--fe-padding) 9px;\n\n  font: inherit;\n  color: inherit;\n\n  background: var(--fe-bg);\n  border: 1px solid var(--fe-border);\n  border-radius: 5px;\n}\n\nbutton,\nsummary {\n  cursor: pointer;\n}\n\nbutton:disabled {\n  cursor: default;\n  color: var(--fe-disabled-text);\n  background: var(--fe-disabled-bg);\n}\n\n.jsonContent button {\n  max-width: 220px;\n  text-align: left;\n  overflow-wrap: anywhere;\n}\n\n.jsonTree {\n  font: 12px / 1.6 ui-monospace, monospace;\n}\n\n.jsonChildren {\n  padding-left: 16px;\n}\n\n.jsonSummary,\n.jsonLeaf {\n  display: flex;\n  gap: 4px;\n  align-items: baseline;\n\n  min-height: 24px;\n  padding: 2px 4px;\n\n  white-space: nowrap;\n\n  background: transparent;\n  border: 0;\n  border-radius: var(--border-radius-0);\n}\n\n.jsonSummary::before {\n  content: '▸';\n  flex: none;\n  width: 10px;\n  color: var(--fe-muted);\n}\n\n.jsonBranch[open] > .jsonSummary::before {\n  content: '▾';\n}\n\n.jsonLeaf {\n  padding-left: 18px;\n}\n\n.jsonName {\n  overflow: hidden;\n  flex: none;\n\n  max-width: 40%;\n\n  color: var(--fe-key);\n  text-overflow: ellipsis;\n}\n\n.jsonValue {\n  overflow: hidden;\n  flex: 1;\n  min-width: 0;\n  text-overflow: ellipsis;\n}\n\n.jsonValue[data-type='string'] {\n  color: var(--fe-string);\n}\n\n.jsonValue[data-type='number'],\n.jsonValue[data-type='boolean'] {\n  color: var(--fe-scalar);\n}\n\n.jsonJump {\n  flex: none;\n\n  min-height: 20px;\n  padding: 0 4px;\n\n  white-space: nowrap;\n\n  background: transparent;\n  border: 0;\n}\n\nbutton:hover:not(:disabled),\nsummary:hover {\n  background: var(--fe-hover);\n  border-color: var(--fe-hover-border);\n}\n\n#record,\nbutton[type='submit'] {\n  color: var(--fe-on-accent);\n  background: var(--fe-accent);\n  border-color: var(--fe-accent);\n}\n\n#record:hover:not(:disabled),\nbutton[type='submit']:hover {\n  background: var(--fe-accent-hover);\n}\n\n.danger {\n  color: var(--fe-danger);\n}\n\ninput {\n  width: 145px;\n}\n\ninput[name='fe'] {\n  width: 70px;\n}\n\ninput[type='datetime-local'] {\n  width: 210px;\n}\n\n.period {\n  position: relative;\n}\n\n.periodFields {\n  position: absolute;\n  z-index: 3;\n  top: calc(100% + 6px);\n  right: 0;\n\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n\n  padding: 12px;\n\n  background: var(--fe-bg);\n  border: 1px solid var(--fe-border);\n  border-radius: 5px;\n  box-shadow: 0 6px 18px var(--fe-overlay-shadow);\n}\n\nlabel,\n.entityPicker {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n\n.entityPicker {\n  position: relative;\n  width: 260px;\n}\n\n.entityControl {\n  display: flex;\n  gap: 4px;\n}\n\n.entityControl input {\n  flex: 1;\n  min-width: 0;\n}\n\n.entityOptions {\n  position: absolute;\n  z-index: 2;\n  top: 100%;\n  left: 0;\n\n  overflow: auto;\n\n  width: max-content;\n  min-width: 100%;\n  max-width: min(480px, 80vw);\n  max-height: 240px;\n\n  background: var(--fe-bg);\n  border: 1px solid var(--fe-border);\n  border-radius: 5px;\n  box-shadow: 0 6px 18px var(--fe-overlay-shadow);\n}\n\n.entityOptions [role='option'],\n.empty {\n  padding: 7px var(--fe-space);\n  overflow-wrap: anywhere;\n}\n\n.entityOptions [role='option'] {\n  cursor: pointer;\n}\n\n.entityOptions [role='option']:hover,\n.entityOptions [aria-selected='true'] {\n  color: var(--fe-selected-text);\n  background: var(--fe-selected);\n}\n\n.body {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  flex: 1;\n  min-height: 0;\n}\n\n.list,\n.detail {\n  overflow: auto;\n  min-width: 0;\n  padding: var(--fe-space);\n}\n\n.list {\n  border-right: 1px solid var(--fe-divider);\n}\n\n.detail {\n  display: flex;\n  flex-direction: column;\n}\n\n:where(.jsonViewer) {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-height: 0;\n}\n\n.jsonControls,\n.jsonPath {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 4px;\n  margin: 8px 0;\n}\n\n.jsonControls[hidden] {\n  display: none;\n}\n\n.jsonSearch {\n  padding: 8px 0;\n}\n\n.jsonContent {\n  overflow: auto;\n  flex: 1;\n  min-height: 60px;\n  max-height: 420px;\n}\n\n.jsonStatus {\n  overflow-wrap: anywhere;\n}\n\ntable {\n  border-collapse: collapse;\n\n  width: 100%;\n  margin-bottom: var(--fe-space);\n\n  font: 12px / 1.5 ui-monospace, monospace;\n  text-align: left;\n}\n\nth {\n  position: sticky;\n  top: -10px;\n  background: var(--fe-head);\n}\n\ntd,\nth {\n  padding: 7px;\n  overflow-wrap: anywhere;\n  border-bottom: 1px solid var(--fe-divider);\n}\n\ntbody tr {\n  cursor: pointer;\n}\n\ntbody tr:hover {\n  background: var(--fe-row-hover);\n}\n\ntr[aria-selected='true'] {\n  background: var(--fe-selected);\n}\n\npre {\n  margin: var(--fe-space) 0;\n  font: 12px / 1.5 ui-monospace, monospace;\n  overflow-wrap: anywhere;\n  white-space: pre-wrap;\n}\n\nmark {\n  color: inherit;\n  background: var(--fe-mark);\n}\n\n.status {\n  flex-basis: 100%;\n  overflow-wrap: anywhere;\n  white-space: pre-wrap;\n}\n\n.error {\n  color: var(--fe-danger);\n}\n\n#progress,\n#selected,\n.muted,\n.empty,\nfooter > span {\n  color: var(--fe-muted);\n}\n\nfooter {\n  border-top: 1px solid var(--fe-divider);\n  border-bottom: 0;\n}\n\n@media (width <= 700px) {\n  .body {\n    overflow: auto;\n    grid-template-columns: 1fr;\n  }\n\n  .list,\n  .detail {\n    overflow: visible;\n  }\n}\n", o = class {
 	recorder;
 	onDispose;
-	container;
 	host = document.createElement("div");
 	shadow = this.host.attachShadow({ mode: "open" });
 	root;
@@ -428,8 +427,6 @@ var n = 2147483648, r = () => ({
 	query = 0;
 	snapshotSeq = 0;
 	messageView;
-	pip;
-	hidden = !1;
 	busy = !1;
 	exporting = !1;
 	destroyed = !1;
@@ -437,10 +434,10 @@ var n = 2147483648, r = () => ({
 	clearing = !1;
 	reloading = !1;
 	constructor(e, n, r) {
-		this.recorder = e, this.onDispose = n, this.container = r, this.shadow.innerHTML = `<style>${a}</style>
+		this.recorder = e, this.onDispose = n, this.shadow.innerHTML = `<style>${a}</style>
       <section class="panel" aria-label="Сообщения FE" tabindex="-1">
         <header><strong>FE messages</strong><div class="recordingControls" role="group" aria-label="Управление записью"><button id="record" title="Начать новый сеанс записи входящих и исходящих сообщений FE; вывод DEBUG_FE_MESSAGES в консоль будет отключён">Начать запись</button><button id="reload" title="Сохранить текущую запись, перезагрузить вкладку и один раз включить запись до первого FE-сообщения">Перезагрузить и начать запись</button></div><select id="session" aria-label="Сеанс" title="Выберите сохранённый сеанс записи для просмотра"></select>
-          <button id="olderSessions" title="Загрузить предыдущие 100 сеансов">Более ранние сеансы</button><button id="latestSessions" title="Вернуться к последним 100 сеансам записи">Последние сеансы</button><button id="pip" title="Открыть панель в отдельном окне поверх других окон; при его закрытии панель вернётся во вкладку">В отдельное окно</button><button id="close" aria-label="Скрыть панель" title="Скрыть панель. Запись продолжится; открыть панель снова: aDebug.showFETable()">×</button></header>
+          <button id="olderSessions" title="Загрузить предыдущие 100 сеансов">Более ранние сеансы</button><button id="latestSessions" title="Вернуться к последним 100 сеансам записи">Последние сеансы</button><button id="close" aria-label="Отключиться" title="Отключиться и остановить запись">×</button></header>
         <form><label>FE <input name="fe" placeholder="Все" inputmode="numeric" title="Номер FE. Пустое поле — все FE"></label>
           <div class="entityPicker"><label for="fe-entity">Сущность (Entity)</label><div class="entityControl"><input id="fe-entity" name="entity" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="fe-entities" autocomplete="off" placeholder="Все / введите имя" title="Точное имя сущности: выберите подсказку или введите своё. Пустое поле — все сущности"><button id="entityToggle" type="button" aria-label="Показать список сущностей" aria-controls="fe-entities" aria-expanded="false" title="Показать подходящие имена сущностей">▾</button></div><div id="fe-entities" class="entityOptions" role="listbox" aria-label="Сущности" hidden></div></div>
           <label>Направление <select name="direction" title="IN — получено от FE, OUT — отправлено в FE"><option value="">Все</option><option>IN</option><option>OUT</option></select></label>
@@ -460,11 +457,11 @@ var n = 2147483648, r = () => ({
 					let t = this.sessions.find((t) => t.id === e.id);
 					t && Object.assign(t, e), this.session?.id === e.id && (this.session = e);
 				}
-				t && this.status(t, !0), this.update(), this.hidden && !this.recorder.isRecording && this.run(() => this.dispose());
+				t && this.status(t, !0), this.update();
 			}
 		}, this.element("form").addEventListener("submit", (e) => {
 			e.preventDefault(), this.run(() => this.search());
-		}), this.button("olderSessions", () => this.loadSessions(void 0, this.sessions[this.sessions.length - 1]?.id)), this.button("latestSessions", () => this.loadSessions()), this.button("record", () => this.toggleRecording()), this.button("reload", () => this.reloadAndRecord()), this.button("close", async () => this.hide()), this.button("pip", () => this.openPiP()), this.button("refresh", () => this.search()), this.button("clearSearch", async () => {
+		}), this.button("olderSessions", () => this.loadSessions(void 0, this.sessions[this.sessions.length - 1]?.id)), this.button("latestSessions", () => this.loadSessions()), this.button("record", () => this.toggleRecording()), this.button("reload", () => this.reloadAndRecord()), this.button("close", async () => this.hide()), this.button("refresh", () => this.search()), this.button("clearSearch", async () => {
 			this.element("form").reset(), await this.search();
 		}), this.button("prev", () => this.loadPage(this.pageIndex - 1)), this.button("next", async () => {
 			this.cursors[this.pageIndex + 1] = this.next, await this.loadPage(this.pageIndex + 1);
@@ -477,7 +474,7 @@ var n = 2147483648, r = () => ({
 			this.session = this.sessions.find((e) => e.id === this.element("#session").value), await this.search();
 		})), this.root.addEventListener("keydown", (e) => {
 			e.key === "Escape" && (this.hide(), e.stopPropagation());
-		}), r ? (this.root.classList.add("embedded"), this.element("#pip").hidden = !0, this.element("#close").title = "Отключиться и остановить запись", r.append(this.host)) : document.body.append(this.host), this.run(() => this.loadSessions(this.recorder.sessionId)), this.reveal();
+		}), this.root.classList.add("embedded"), this.element("#close").title = "Отключиться и остановить запись", r.append(this.host), this.run(() => this.loadSessions(this.recorder.sessionId)), this.reveal();
 	}
 	get view() {
 		return this.host.ownerDocument.defaultView ?? window;
@@ -512,7 +509,7 @@ var n = 2147483648, r = () => ({
 		n.replaceChildren();
 		for (let e of this.sessions) {
 			let t = document.createElement("option");
-			t.value = e.id, t.textContent = new Date(e.startedAt).toLocaleString(), n.append(t);
+			t.value = e.id, t.textContent = `${new Date(e.startedAt).toLocaleString()}${e.origin ? ` · ${e.origin}` : ""}`, n.append(t);
 		}
 		n.value = this.session?.id ?? "", this.session?.error ? this.status(this.session.error, !0) : this.session?.partialStart && this.status("В начале сеанса пропущен начальный фрагмент существующего direct-потока"), await this.search();
 	}
@@ -530,16 +527,9 @@ var n = 2147483648, r = () => ({
 		if (this.starting || this.exporting || this.clearing || this.reloading) throw Error("Дождитесь завершения текущей операции");
 		this.reloading = !0, this.status("Сохранение истории перед перезагрузкой…"), this.update();
 		try {
-			await this.recorder.stop(), await this.recorder.reload();
+			await this.recorder.stop(), await this.recorder.reload(), await this.loadSessions(this.recorder.sessionId), this.reloading = !1, this.update();
 		} catch (e) {
 			throw this.reloading = !1, this.update(), e;
-		}
-	}
-	async recordFromReload(e) {
-		if (e()) try {
-			this.recorder.isRecording || await this.toggleRecording(), e() ? this.status("Запись включена до первого FE-сообщения после перезагрузки") : await this.dispose();
-		} catch (t) {
-			throw e() ? this.status(`Не удалось подготовить запись FE: ${String(t)}`, !0) : await this.dispose().catch(() => void 0), t;
 		}
 	}
 	async toggleRecording() {
@@ -645,61 +635,29 @@ var n = 2147483648, r = () => ({
 		if (!e || this.exporting) return;
 		let t = e.count;
 		this.exporting = !0, this.update();
-		let n;
 		try {
-			let r = this.view, i = this.container ? void 0 : r.showSaveFilePicker;
-			i && (n = await (await i.call(r, { suggestedName: "fe-history.jsonl" })).createWritable());
-			let a = 0, o = 0, s = 0, c = [], l = 0, u = () => {
-				let e = URL.createObjectURL(new Blob(c, { type: "application/x-ndjson" })), t = document.createElement("a");
-				t.href = e, t.download = `fe-history-${++s}.jsonl`, t.click(), URL.revokeObjectURL(e), c = [], l = 0;
+			let n = 0, r = 0, i = 0, a = [], o = 0, s = () => {
+				let e = URL.createObjectURL(new Blob(a, { type: "application/x-ndjson" })), t = document.createElement("a");
+				t.href = e, t.download = `fe-history-${++i}.jsonl`, t.click(), URL.revokeObjectURL(e), a = [], o = 0;
 			};
 			if (e.count) for (;;) {
-				let r = await this.recorder.rpc({
+				let i = await this.recorder.rpc({
 					method: "export",
 					sessionId: e.id,
-					after: a,
-					offset: o,
+					after: n,
+					offset: r,
 					maxSeq: t
-				});
-				if (n) await n.write(r.text);
-				else {
-					let e = new TextEncoder().encode(r.text).byteLength;
-					l + e > 16777216 && c.length && u(), c.push(r.text), l += e;
-				}
-				if (r.next === void 0) break;
-				a = r.next, o = r.offset;
+				}), c = new TextEncoder().encode(i.text).byteLength;
+				if (o + c > 16777216 && a.length && s(), a.push(i.text), o += c, i.next === void 0) break;
+				n = i.next, r = i.offset;
 			}
-			n ? (await n.close(), n = void 0) : c.length && u(), this.status("Экспорт завершён");
-		} catch (e) {
-			throw await n?.abort().catch(() => void 0), e;
+			a.length && s(), this.status("Экспорт завершён");
 		} finally {
 			this.exporting = !1, this.update();
 		}
 	}
-	async openPiP() {
-		if (this.pip && !this.pip.closed) {
-			this.pip.focus();
-			return;
-		}
-		let e = window.documentPictureInPicture;
-		if (!e) {
-			this.status("Document Picture-in-Picture недоступен: используйте панель");
-			return;
-		}
-		let t = await e.requestWindow({
-			width: 1040,
-			height: 650
-		});
-		if (this.destroyed) {
-			t.close();
-			return;
-		}
-		this.pip = t, t.document.body.style.margin = "0", this.root.classList.add("pip"), t.document.body.append(this.host), t.addEventListener("pagehide", () => {
-			this.pip = void 0, !this.destroyed && (document.body.append(this.host), this.root.classList.remove("pip"), this.reveal());
-		}, { once: !0 });
-	}
 	reveal() {
-		this.hidden = !1, this.host.style.display = "", this.pip && !this.pip.closed && this.pip.focus(), this.root.focus();
+		this.root.focus();
 	}
 	setTheme(e) {
 		this.host.dataset.theme = e;
@@ -712,11 +670,7 @@ var n = 2147483648, r = () => ({
 			this.status("Дождитесь завершения текущей операции");
 			return;
 		}
-		if (this.container) {
-			this.run(() => this.dispose());
-			return;
-		}
-		this.pip && this.pip.close(), this.hidden = !0, this.messageView.clear(), this.host.style.display = "none", this.recorder.isRecording || this.run(() => this.dispose());
+		this.run(() => this.dispose());
 	}
 	async dispose() {
 		if (!this.destroyed) {

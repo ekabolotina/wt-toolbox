@@ -1,3 +1,5 @@
+import { feCaptureAction } from './actions/feCaptureAction.js';
+import { captureFEPage } from './handlers/captureFEPage.js';
 import { checkVpnAction } from './actions/checkVpnAction.js';
 import { overridePRAction } from './actions/overridePRAction.js';
 import { getStandAction } from './actions/getStandAction.js';
@@ -33,3 +35,5 @@ feViewerAction.register(feViewer);
 trackFEViewer();
 
 chrome.runtime.onInstalled.addListener(() => {});
+
+feCaptureAction.register(captureFEPage);
