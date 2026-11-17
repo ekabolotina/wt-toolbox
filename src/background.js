@@ -1,3 +1,5 @@
+import { feCaptureAction } from './actions/feCaptureAction.js';
+import { captureFEPage } from './handlers/captureFEPage.js';
 import { checkVpnAction } from './actions/checkVpnAction.js';
 import { overridePRAction } from './actions/overridePRAction.js';
 import { getStandAction } from './actions/getStandAction.js';
@@ -15,6 +17,9 @@ import { runUITests } from './handlers/runUITests.js';
 import { overrideRemoteConfig } from './handlers/overrideRemoteConfig.js';
 import { checkOverridableTab } from './handlers/checkOverridableTab.js';
 import { trackAppliedPR } from './handlers/trackAppliedPR.js';
+import { feViewerAction } from './actions/feViewerAction.js';
+import { feViewer } from './handlers/feViewer.js';
+import { trackFEViewer } from './handlers/trackFEViewer.js';
 
 checkVpnAction.register(checkVpn);
 overridePRAction.register(overridePR);
@@ -26,5 +31,9 @@ overrideRemoteConfigAction.register(overrideRemoteConfig);
 checkOverridableTabAction.register(checkOverridableTab);
 
 trackAppliedPR();
+feViewerAction.register(feViewer);
+trackFEViewer();
 
 chrome.runtime.onInstalled.addListener(() => {});
+
+feCaptureAction.register(captureFEPage);

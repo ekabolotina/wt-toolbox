@@ -3,17 +3,20 @@
   "version": "1.5.0",
   "private": true,
   "scripts": {
+    "test": "node --test scripts/fe-viewer.test.mjs scripts/fe-capture-session.test.mjs scripts/fe/*.test.mjs",
     "lint:js": "eslint .",
     "lint:css": "stylelint \"**/*.css\"",
     "lint:format": "prettier --check .",
     "format": "prettier --write .",
-    "build": "rm -rf dist && mkdir -p dist && cp manifest.json dist/ && cp -r src dist/"
+    "build": "node scripts/build.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "@types/chrome": "^0.2.2",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^10.1.8",
+    "expect": "29.7.0",
+    "fake-indexeddb": "4.0.2",
     "prettier": "^3.9.5",
     "stylelint": "^16.0.0",
     "stylelint-config-standard": "^36.0.0"
